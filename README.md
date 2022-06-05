@@ -1,342 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--
- * This Source Code Form is subject to the terms of the Mozilla Public License,
- * v. 2.0. If a copy of the MPL was not distributed with this file, You can
- * obtain one at http://mozilla.org/MPL/2.0/
- *
- * Copyright (C) 2005-2014, Peter Johnson (www.delphidabbler.com).
- *
- * Read-me file for Message Dialogue Components
--->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+# Message Dialogue Components
 
-<head>
+## Description
 
-  <title>
-    DelphiDabbler.com Message Dialog Components ReadMe
-  </title>
+This unit implements two customisable message dialogue box components. They are:
 
-  <style type="text/css">
-    body {
-      margin: 1em;
-      padding: 0;
-      font-family: Verdana, Arial, sans-serif;
-      font-size: 9pt;
-      line-height: 150%;
-    }
-    h1 {
-      margin: 0 0 1em 0;
-      padding: 0.5em;
-      border: 1px silver solid;
-      background-color: #eee;
-      font-size: 13pt;
-      font-weight: bold;
-      text-align: center;
-    }
-    h1 .subtitle {
-      font-style: italic;
-      color: #336;
-    }
-    h2 {
-      margin: 1em 0 0 0;
-      padding: 0;
-      padding-bottom: 6px;
-      border-bottom: 1px silver solid;
-      font-size: 11pt;
-      font-weight: bold;
-    }
-    h3 {
-      margin: 0.5em 0 0 0;
-      padding: 0;
-      font-size: 9pt;
-      font-weight: bold;
-    }
-    p {
-      margin: 0.5em 0 0 0;
-      padding: 0;
-    }
-    ul, ol {
-      margin: 0.5em 0 0 3em;
-      padding: 0;
-    }
-    ul {
-      list-style-type: square;
-    }
-    ul.spaced li,
-    ol.spaced li {
-      margin-top: 0.5em;
-    }
-    ul.spaced li,
-    ol.spaced li {
-      margin-top: 0.5em;
-    }
-    ul.unspaced li,
-    ol.unspaced li {
-      margin-top: 0;
-    }
-    ul.unspaced li.first,
-    ol.unspaced li.first {
-      margin-top: 0.5em;
-    }
-    code {
-      font-family: "Courier New", Courier, monospace;
-    }
-    a:link {
-      color: #336;
-      text-decoration: underline;
-    }
-    a:visited {
-      color: #669;
-      text-decoration: underline;
-    }
-    a:active {
-      color: #336;
-      text-decoration: underline;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .pullout {
-      border-left: 8px silver solid;
-      background-color: #eee;
-      margin: 0.5em 0 0 0;
-      padding: 0.25em 0.5em;
-      font-style: italic;
-    }
-    .indent {
-      margin-left: 3em;
-    }
-    .highlight {
-      color: #336;
-      font-style: italic;
-      font-weight: bold;
-    }
-    .endnotes {
-      margin: 1.5em 0 0 0;
-      padding: 1em 0 0 0;
-      border-top: 1px silver solid;
-    }
-    .comments {
-      font-style: italic;
-    }
-    .copyright,
-    .copyright a:link,
-    .copyright a:visited,
-    .copyright a:active {
-      margin: 1em 0 0 0;
-      color: gray;
-      font-size: 8pt;
-      text-align: right;
-    }
-  </style>
+* _TPJWinMsgDlg_ - This component wraps the Windows _MessageBoxIndirect_ API call and displays a message box based on that provided by Windows. It will be suitable for most purposes and has the lighter footprint.
+* _TPJVCLMsgDlg_ - This component uses the Delphi VCL _CreateMessageDialog_ function to create a form based message box. (_CreateMessageDialog_ is used by the standard Delphi _MessageDlgXXX_ functions). The component provides more flexibility than either the Delphi functions or _TPJWinMsgDlg_. It should be used when it is necessary to display buttons or combinations of buttons that are not supported by the Windows API message box or when a finer degree of control over the appearance and behaviour of the message box is required. _TPJVCLMsgDlg_ supports all the features of _TPJWinMsgDlg_ and extends them. The dialogue box component's form can be customised by handling the _OnShow_ and _OnHide_ events.
 
-</head>
+For full details please see the [online documentation](https://delphidabbler.com/url/msgdlg-docs).
 
-<body>
+## Compatibility
 
-<h1>
-  Message Dialogue Components<br />
-  <span class="subtitle">ReadMe</span>
-</h1>
+The components have been tested with the 32-bit Windows compiler of Delphi 7 and Delphi 2006 to XE4 and the the 64-bit Windows compiler of Delphi XE2 to XE4. They are believed to compile with any version of Delphi from Delphi 4 onwards but this has not been tested.
 
-<h2>
-  Description
-</h2>
+The unit has dependencies on the VCL and therefore cannot be used with the FireMonkey framework or with non-Windows targets.
 
-<p>
-  This unit implements two customisable message dialogue box components. They
-  are:
-</p>
+## Installation
 
-<ul class="spaced">
-  <li>
-    <span class="highlight">TPJWinMsgDlg</span><br />
-    This component wraps the Windows <em>MessageBoxIndirect</em> API call and
-    displays a message box based on that provided by Windows. It will be
-    suitable for most purposes and has the lighter footprint.
-  </li>
-  <li>
-    <span class="highlight">TPJVCLMsgDlg</span><br />
-    This component uses the Delphi VCL <var>CreateMessageDialog</var> function
-    to create a form based message box. (<var>CreateMessageDialog</var> is used
-    by the standard Delphi <var>MessageDlgXXX</var> functions). The component
-    provides more flexibility than either the Delphi functions or
-    <var>TPJWinMsgDlg</var>. It should be used when it is necessary to display
-    buttons or combinations of buttons that are not supported by the Windows API
-    message box or when a finer degree of control over the appearance and
-    behaviour of the message box is required. <var>TPJVCLMsgDlg</var> supports
-    all the features of <var>TPJWinMsgDlg</var> and extends them. The dialogue
-    box component's form can be customised by handling the <var>OnShow</var> and
-    <var>OnHide</var> events.
-  </li>
-</ul>
+The Message Dialogue Components and their associated files are supplied in a zip file. Before installing you need to extract all the files from the zip file, preserving the directory structure. The following files will be extracted:
 
-<h2>
-  Compatibility
-</h2>
+* **`PJMessageDialog.pas`** – component source code.
+* **`PJMessageDialog.dcr`** – component palette glyphs.
+* `README.md` – this file.
+* `CHANGELOG.md` – project change log.
+* `MPL-2.txt` – the Mozilla Public License v2.0.
+* `Documentation.url` – short-cut to the components' online documentation.
 
-<p>
-  The components have been tested with the 32-bit Windows compiler of Delphi 7
-  and Delphi 2006 to XE4 and the the 64-bit Windows compiler of Delphi XE2 to
-  XE4. They are believed to compile with any version of Delphi from Delphi 4
-  onwards but this has not been tested.
-</p>
+In addition to the above files you will find the source code of a [demo project](#demo-program) in the `Demo` sub-directory.
 
-<p>
-  The unit has dependencies on the VCL and therefore cannot be used with the
-  FireMonkey framework or with non-Windows targets.
-</p>
+You can now install the components into the Delphi IDE. To do this, the files `PJMessageDialog.pas` and `PJMessageDialog.dcr` should be added to a design time package. If you need help doing this [see here](https://delphidabbler.com/url/install-comp).
 
-<h2>
-  Installation
-</h2>
+## Demo Program
 
-<p>
-  The Message Dialogue Components and their associated files are supplied in a
-  zip file. Before installing you need to extract all the files from the zip
-  file, preserving the directory structure. The following files will be
-  extracted:
-</p>
+A demo program that exercises the components is included in the download.
 
-<ul>
-  <li class="first">
-    <strong><code>PJMessageDialog.pas</code></strong> &ndash; component source
-    code.
-  </li>
-  <li>
-    <strong><code>PJMessageDialog.dcr</code></strong> &ndash; component palette
-    glyphs.
-  </li>
-  <li>
-    <code>ReadMe.htm</code> &ndash; this file.
-  </li>
-  <li>
-    <code>ChangeLog.txt</code> &ndash; project change log.
-  </li>
-  <li>
-    <code>MPL-2.txt</code> &ndash; the Mozilla Public License v2.0.
-  </li>
-  <li>
-    <code>Documentation.url</code> &ndash; short-cut to the components' online
-    documentation.
-  </li>
-</ul>
+This demo requires Delphi 7 as a minimum.
 
-<p>
-  In addition to the above files you will find the source code of the demo
-  project in the <code>Demo</code> sub-directory.
-</p>
+For more information about the demo see the file [`ReadMe.txt`](https://raw.githubusercontent.com/ddablib/msgdlg/main/Demo/ReadMe.txt) in the `Demo` directory.
 
-<p>
-  You can now install the components into the Delphi IDE. To do this, the files
-  <code>PJMessageDialog.pas</code> and <code>PJMessageDialog.dcr</code> should
-  be added to a design time package. If you need help doing this <a
-    href="http://www.delphidabbler.com/url/install-comp"
-  >see here</a>.
-</p>
+## Update History
 
-<h2>
-  Documentation
-</h2>
+A complete change log is provided in [`CHANGELOG.md`](https://github.com/ddablib/msgdlg/blob/main/CHANGELOG.md) that is included in the download.
 
-<p>
-  Documentation has comprehensive <a
-    href="http://www.delphidabbler.com/url/msgdlg-docs"
-  >online documentation</a>.
-</p>
+## License
 
-<h2>
-  Demo Program
-</h2>
+The _Message Dialogue Components_ are released under the terms of the [Mozilla Public License v2.0](https://www.mozilla.org/MPL/2.0/).
 
-<p>
-  A demo program that exercises the components is included in the download.
-</p>
+All relevant trademarks are acknowledged.
 
-<p>
-  This demo requires Delphi 7 as a minimum.
-</p>
+## Bugs and Feature Requests
 
-<p>
-  For more information about the demo see the file <code>ReadMe.txt</code> in
-  the <code>Demo</code> directory.
-</p>
+Bugs can be reported or new features requested via the project's [Issue Tracker](https://github.com/ddablib/msgdlg/issues). A GitHub account is required.
 
-<h2>
-  Update History
-</h2>
+Please check if an issue has already been created for a similar report or request. If so then please add a comment containing as much information as you can to the existing issue, or if you've nothing to add, just add a :+1: (`:+1:`) comment. If there is no suitable existing issue then please add a new issue and give as much information as possible.
 
-<p>
-  A complete change log is provided in a text file that is included in the
-  download.
-</p>
+## About the Author
 
-<h2>
-  License
-</h2>
+I'm Peter Johnson – a hobbyist programmer living in Ceredigion in West Wales, UK, writing mainly in Delphi. My programs and other library code are available from: [https://delphidabbler.com/](https://delphidabbler.com/).
 
-<p>
-  The <em>Message Dialogue Components</em> are released under the terms of the
-  <a
-    href="http://www.mozilla.org/MPL/2.0/"
-  >Mozilla Public License v2.0</a>.
-</p>
-
-<p>
-  All relevant trademarks are acknowledged.
-</p>
-
-<h2>
-  Bugs and Feature Requests
-</h2>
-
-<p>
-  Bugs can be reported or new features requested via the <a
-    href="http://www.delphidabbler.com/url/ddlib-issues"
-  >Issue Tracker</a>.
-</p>
-
-<p>
-  If no similar report or request has been recorded already, use the <em>New
-  Issue</em> link to add a new issue. Please select the most appropriate
-  template from the <em>Templates</em> drop down list.
-</p>
-
-<h2>
-  About the author
-</h2>
-
-<p>
-  I'm Peter Johnson &ndash; a hobbyist programmer living in Ceredigion in West
-  Wales, UK, writing write mainly in Delphi. My programs and code are available
-  from <a
-    href="http://www.delphidabbler.com/"
-  >http://www.delphidabbler.com/</a>.
-</p>
-
-<p>
-  I can be <a
-    href="http://www.delphidabbler.com/contact"
-  >contacted via the website</a>.
-</p>
-
-
-<div class="endnotes">
-  <div class="comments">
-    Please <a
-      href="http://www.delphidabbler.com/contact"
-    >let me know</a> if you have any comments about the component, but
-    please use the Issue Tracker noted above to report bugs and request new
-    features.
-  </div>
-  <div class="copyright">
-    This document is copyright &copy; 2005-2014, P D Johnson, <a
-      href="http://www.delphidabbler.com/"
-    >www.delphidabbler.com</a>
-  </div>
-</div>
-
-</body>
-
-</html>
+This document is copyright © 2005-2022, [P D Johnson](https://gravatar.com/delphidabbler).
