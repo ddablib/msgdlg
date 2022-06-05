@@ -4,10 +4,10 @@ Compiling
 ---------
 
 The demo requires Delphi 7 or later to compile. Simply open the .dpr file in any
-supported version of the program and compile to create a 32-bit Windows
-executable. Using Delphi XE2 or later the demo can also be compiled as a 64-bit
-Windows executable simply by adding a Windows 64 bit target and performing a
-full re-build.
+supported version of Delphi and compile to create a 32-bit Windows executable.
+Using Delphi XE2 or later the demo can also be compiled as a 64-bit Windows
+executable simply by adding a Windows 64 bit target and performing a full
+re-build.
 
 Should you want to compile the program in more than one version of Delphi you
 are advised to perform each compilation from a fresh copy of the demo source
@@ -51,9 +51,9 @@ your required help file type. How to do this is beyond the scope of this
 document.
 
 For further information about the components and their properties see the online
-documentation at http://delphidabbler.com/url/msgdlg-docs
+documentation at https://delphidabbler.com/url/msgdlg-docs
 
 --------------------------------------------------------------------------------
 Any copyright in this file is dedicated to the Public Domain.
-http://creativecommons.org/publicdomain/zero/1.0/
+https://creativecommons.org/publicdomain/zero/1.0/
 --------------------------------------------------------------------------------
