@@ -36,7 +36,7 @@ A demo program that exercises the components is included in the download.
 
 This demo requires Delphi 7 as a minimum.
 
-For more information about the demo see the file [`ReadMe.txt`](https://raw.githubusercontent.com/ddablib/msgdlg/main/Demo/ReadMe.txt) in the `Demo` directory.
+For more information about the demo see the file [`README.md`](https://github.com/ddablib/msgdlg/blob/main/Demo/README.md) in the `Demo` directory.
 
 ## Update History
 
