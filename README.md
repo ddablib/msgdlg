@@ -26,17 +26,7 @@ The Message Dialogue Components and their associated files are supplied in a zip
 * `MPL-2.txt` – the Mozilla Public License v2.0.
 * `Documentation.url` – short-cut to the components' online documentation.
 
-In addition to the above files you will find the source code of a [demo project](#demo-program) in the `Demo` sub-directory.
-
 You can now install the components into the Delphi IDE. To do this, the files `PJMessageDialog.pas` and `PJMessageDialog.dcr` should be added to a design time package. If you need help doing this [see here](https://delphidabbler.com/url/install-comp).
-
-## Demo Program
-
-A demo program that exercises the components is included in the download.
-
-This demo requires Delphi 7 as a minimum.
-
-For more information about the demo see the file [`README.md`](https://github.com/ddablib/msgdlg/blob/main/Demo/README.md) in the `Demo` directory.
 
 ## Update History
 
